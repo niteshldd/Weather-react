@@ -3,6 +3,13 @@ import {connect} from 'react-redux';
 
 
 class WeatherList extends Component {
+    rednderWeather (cityData){
+        const name = cityData.city.name
+        return(
+        
+        <tr key={name}  ><td>{name}</td></tr>
+    )
+    }
     render(){
         return(
             <table className="table table-hover" >
@@ -15,7 +22,7 @@ class WeatherList extends Component {
                     </tr>
                 </thead>
                 <tbody>
-
+                    {this.props.weather.map(this.rednderWeather)}
                 </tbody>
             </table>
         )
@@ -23,6 +30,7 @@ class WeatherList extends Component {
 }
 
 function mapStateToProps ({weather}){
+    //weather is came from reducer index.js
     return {weather}   // this is like (weather: state.weather) but with ES6 we can write {weather} as both are same 
 }
 
